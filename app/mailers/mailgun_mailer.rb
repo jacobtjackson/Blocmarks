@@ -1,0 +1,2 @@
+class MailgunMailer < ApplicationMailer
+end
