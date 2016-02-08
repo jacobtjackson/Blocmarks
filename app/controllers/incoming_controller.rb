@@ -4,12 +4,15 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
-    @user = User.find_by(email: params[:sender])
-   @topic = Topic.find_by(title: params[:subject])
+    title = params[:message][:headers][:subject]
+    email = params[:envelope][:sender]
+    @user = User.find_by(email: email)
+   @topic = Topic.find_by(title: title)
     @url = params['body-plain']
 
+
     if User.nil?
-      @user = User.create!(email: params[:sender], password: 'password')
+      @user = User.create!(email: email, password: 'password')
       @user.skip_confirmation!
       @user.save!
     else
@@ -17,7 +20,7 @@ class IncomingController < ApplicationController
     end
 
     if Topic.nil?
-      @topic = Topic.create!(title: params[:subject], user: @user)
+      @topic = Topic.create!(title: title, user: @user)
     end
 
     Bookmark.create!(topic: @topic, user: @user, url: @url)
@@ -34,4 +37,6 @@ class IncomingController < ApplicationController
     # Assuming all went well.
     head 200
   end
+
+
 end
