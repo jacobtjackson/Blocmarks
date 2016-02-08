@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :bookmarks
   end
   root to: 'welcome#index'
-  post :incoming, to: 'incoming#create'
+  post '/incoming', to: 'incoming#create'
 end
