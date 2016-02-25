@@ -7,9 +7,9 @@
 <% @topic.bookmarks.each do |bookmark| %>
   <div class="media-body">
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-2">
         <div class="container">
-            <img src="<%= bookmark.url %>/favicon.ico">
+          <img src="http://icons.better-idea.org/icon?url=<%= bookmark.url %>&size=120">
           <div class="media-heading">
             <%= link_to bookmark.name, topic_bookmark_path(@topic, bookmark) %>
           </div>

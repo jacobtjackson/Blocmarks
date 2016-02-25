@@ -1,7 +1,6 @@
 <h1><a href="<%= @bookmark.url %>"><%= @bookmark.name %></a></h1>
-<img src="<%= @bookmark.url %>/favicon.ico">
+<img src="http://icons.better-idea.org/icon?url=<%= @bookmark.url %>&size=120">
 <div class="row">
-  <div class="col-md-4">
     <% if policy(@bookmark).update? %>
       <%= link_to "Edit", edit_topic_bookmark_path(@bookmark.topic, @bookmark), class: 'btn btn-success' %>
     <% end %>
@@ -9,7 +8,7 @@
       <%= link_to "Delete Bookmark", [@bookmark.topic, @bookmark], method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this bookmark?"} %>
     <% end %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <%= render partial: 'likes/like', locals: {bookmark: @bookmark} %>
   </div>
 </div>
