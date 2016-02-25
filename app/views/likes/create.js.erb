@@ -1,2 +1,0 @@
-unlike-button = "<%= link_to [@bookmark.topic, @bookmark, @like], class: 'btn btn-danger', method: :delete, remote: true, id: "unlike-bookmark-#{@bookmark.id}" do %> <i class="glyphicon glyphicon-star-empty" > </i>&nbsp; Unlike <% end %>"
-$('#like-bookmark-'+ <%= @bookmark.id %> ).replaceWith($(unlike-button))

@@ -1,0 +1,15 @@
+<h1>My Blocmarks</h1>
+<% @user_bookmarks.each do |bookmark| %>
+    <div class="col-md-2">
+      <img src="http://icons.better-idea.org/icon?url=<%= bookmark.url %>&size=120">
+      <a href="<%= bookmark.url %>"><%= bookmark.name %></a>
+    </div>
+<% end %>
+
+<% @liked_bookmarks.each do |bookmark| %>
+    <div class="col-md-2">
+      <img src="http://icons.better-idea.org/icon?url=<%= bookmark.url %>&size=120">
+      <a href="<%= bookmark.url %>"><%= bookmark.name %></a>
+    </div>
+<% end %>
+

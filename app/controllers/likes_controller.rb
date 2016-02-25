@@ -19,7 +19,7 @@ class LikesController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:bookmark_id])
     like = @bookmark.likes.where(user_id: current_user.id).first
-
+    authorize like
 
     if like.destroy
       flash[:success] = "You unliked this bookmark."
