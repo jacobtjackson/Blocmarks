@@ -16,7 +16,7 @@ class IncomingController < ApplicationController
     end
 
    @topic = Topic.find_by(title: title, user: @user) || Topic.create!(title: title, user: @user)
-    @url = URI(params['body-plain']).to_s
+    @url = params['body-plain']
 
 
 
