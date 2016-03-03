@@ -5,8 +5,8 @@ class IncomingController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def create
-    title = params[:message][:headers][:subject]
-    email = params[:envelope][:sender]
+    title = params[:subject]
+    email = params[:sender]
     @user = User.find_by(email: email)
    @topic = Topic.find_by(title: title)
     @url = params['body-plain']
