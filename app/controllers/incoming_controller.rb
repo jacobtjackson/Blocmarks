@@ -8,8 +8,8 @@ class IncomingController < ApplicationController
     title = params[:subject]
     email = params[:sender]
     @user = User.find_by(email: email)
-   @topic = Topic.find_by(title: title)
-    @url = params['body-plain']
+   @topic = Topic.create_or_find_by(title: title, user: @user)
+    @url = URI(params['body-plain']).to_s
 
 
     if User.nil?
@@ -18,10 +18,6 @@ class IncomingController < ApplicationController
       @user.save!
     else
       user = @user
-    end
-
-    if Topic.nil?
-      @topic = Topic.create!(title: title, user: @user)
     end
 
     Bookmark.create!(topic: @topic, user: @user, url: @url)
